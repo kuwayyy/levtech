@@ -12,11 +12,21 @@
             @method('PUT')
             <div class='content__title'>
                 <h2>タイトル</h2>
-                <input type='text' name='post[title]' value="{{ $post->title }}">
+                @if( old('post.title') != NULL )
+                    <input type="text" name="post[title]" value="{{ old('post.title') }}"/>
+                @else
+                    <input type='text' name='post[title]' value="{{ $post->title }}">
+                @endif
+                <p class="title__error" style="color:red">{{ $errors->first('post.title') }}</p>
             </div>
             <div class='content__body'>
                 <h2>本文</h2>
-                <input type='text' name='post[body]' value="{{ $post->body }}">
+                @if( old('post.body') != NULL )
+                    <textarea name="post[body]">{{ old('post.body') }}</textarea>
+                @else
+                    <textarea name="post[body]">{{ $post->body }}</textarea>
+                @endif
+                <p class="body__error" style="color:red">{{ $errors->first('post.body') }}</p>
             </div>
             <input type="submit" value="保存">
         </form>
