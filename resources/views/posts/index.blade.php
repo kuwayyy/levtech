@@ -15,6 +15,7 @@
                     <a href="/posts/{{ $post->id }}"><h2 class='title'>{{ $post->title }}</h2></a>
                     <p class='body'>{{ $post->body }}</p>
                 </div>
+                <p class="edit">[<a href="/posts/{{ $post->id }}/edit">編集</a>]</p>
             @endforeach
         </div>
         <div class='paginate'>
